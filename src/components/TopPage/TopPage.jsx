@@ -5,10 +5,10 @@ import './TopPage.scss';
 import TopBar from './TopBar';
 
 
-function TopPage() {
+function TopPage({cartItem}) {
     return (
         <div className="topPage">
-            <TopBar />
+            <TopBar cartItem={cartItem} />
             <div className="top">
                 <div className="left">
                     <h1>Wherever life Plants you,

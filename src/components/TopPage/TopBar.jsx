@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function TopBar() {
+function TopBar({cartItem}) {
     return (
         <div className="topBar" >
             <Navbar expand="lg">
@@ -26,7 +26,7 @@ function TopBar() {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link>Cart</Nav.Link>
+                        <Nav.Link>Cart <b>{cartItem}</b></Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
