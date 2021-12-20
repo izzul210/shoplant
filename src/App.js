@@ -1,9 +1,16 @@
 import './App.css';
 
+//Components
+import TopPage from './components/TopPage/TopPage';
+import OurPlants from './components/OurPlants/OurPlants';
+
+//Commerce.js
+
 function App() {
   return (
     <div className="App">
-       <h1>Home</h1>
+       <TopPage />
+       <OurPlants />
     </div>
   );
 }
