@@ -3,9 +3,14 @@ import React, { useState, useEffect } from 'react';
 //Components
 import TopPage from './components/TopPage/TopPage';
 import OurPlants from './components/OurPlants/OurPlants';
+import Cart from './components/Cart/Cart';
+import TopBar from './components/TopPage/TopBar';
 
 //Commerce.js
 import { commerce } from './lib/commerce';
+
+//React Router
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -33,13 +38,14 @@ function App() {
       fetchProducts();
       fetchCart();
   },[]);
-  
-  console.log(cart);
+
 
   return (
     <div className="App">
-       <TopPage cartItem={cart.total_items}/>
-       <OurPlants products={products} handleAddToCart={handleAddToCart} />
+       <TopBar cartItem={cart.total_items} />
+       {/* <TopPage />
+       <OurPlants products={products} handleAddToCart={handleAddToCart} /> */}
+       <Cart cart={cart} />
     </div>
   );
 }

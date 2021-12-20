@@ -7,10 +7,13 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//React Icons
+import {BsFillCartCheckFill} from 'react-icons/bs';
+
 function TopBar({cartItem}) {
     return (
         <div className="topBar" >
-            <Navbar expand="lg">
+            <Navbar expand="lg" sticky="top">
                 <Container>
                     <Navbar.Brand href="#home">ShoPlant</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,7 +29,7 @@ function TopBar({cartItem}) {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link>Cart <b>{cartItem}</b></Nav.Link>
+                        <Nav.Link><BsFillCartCheckFill /> <b>{cartItem}</b></Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

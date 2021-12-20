@@ -1,15 +1,23 @@
 import React from 'react';
 import './OurPlants.scss';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from './ProductCard/ProductCard';
 
 //Bootstrap
 import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
 
 function OurPlants({products, handleAddToCart}) {
     const productList = [];
 
-    if(products === null){
-        return <div>Loading...</div>
+    if(products.length === 0){
+        return <div className="homepage">
+                <Container>
+                    <h2>Our Plants</h2>
+                    <Spinner animation="border" role="status" style={{marginTop: '5rem'}}>
+                     <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </Container>
+              </div>
     } else {
         products.map((product) => {
             productList.push(
