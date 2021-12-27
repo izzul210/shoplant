@@ -10,7 +10,7 @@ import TopBar from './components/TopPage/TopBar';
 import { commerce } from './lib/commerce';
 
 //React Router
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -41,12 +41,21 @@ function App() {
 
 
   return (
-    <div className="App">
-       <TopBar cartItem={cart.total_items} />
-       {/* <TopPage />
-       <OurPlants products={products} handleAddToCart={handleAddToCart} /> */}
-       <Cart cart={cart} />
-    </div>
+    <Router>
+      <div className="App">
+        <TopBar cartItem={cart.total_items} />
+        <Routes>
+          <Route exact path="/" element={
+            <React.Fragment>
+              <TopPage />
+              <OurPlants products={products} handleAddToCart={handleAddToCart} />
+            </React.Fragment>
+          } />
+          <Route exact path="/cart" element={<Cart cart={cart} />} />
+        </Routes>
+      </div>
+    </Router>
+    
   );
 }
 
