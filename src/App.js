@@ -5,6 +5,7 @@ import TopPage from './components/TopPage/TopPage';
 import OurPlants from './components/OurPlants/OurPlants';
 import Cart from './components/Cart/Cart';
 import TopBar from './components/TopPage/TopBar';
+import Checkout from './components/CheckoutForm/Checkout/Checkout';
 
 //Commerce.js
 import { commerce } from './lib/commerce';
@@ -34,6 +35,25 @@ function App() {
     setCart(item.cart);
   }
 
+
+  //Update item quantity at cart
+  const handleUpdateCartQty = async(productId, quantity) => {
+    const { cart } = await commerce.cart.update(productId, { quantity});
+    setCart(cart);
+  }
+
+  //Remove item from cart
+  const handleRemoveFromCart = async(productId) => {
+    const { cart } = await commerce.cart.remove(productId);
+    setCart(cart);
+  }
+
+  //Emty cart
+  const handleEmptyCart = async() => {
+    const {cart} = await commerce.cart.empty();
+    setCart(cart);
+  }
+
   useEffect(() => {
       fetchProducts();
       fetchCart();
@@ -51,7 +71,11 @@ function App() {
               <OurPlants products={products} handleAddToCart={handleAddToCart} />
             </React.Fragment>
           } />
-          <Route exact path="/cart" element={<Cart cart={cart} />} />
+          <Route exact path="/cart" element={<Cart cart={cart} 
+                                                   handleUpdateCartQty={handleUpdateCartQty}
+                                                   handleRemoveFromCart={handleRemoveFromCart}
+                                                   handleEmptyCart={handleEmptyCart} />} />
+          <Route exact path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
     </Router>

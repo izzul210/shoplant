@@ -1,13 +1,13 @@
 import React from 'react';
 import './Cart.scss';
-
+import {Link} from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
 
 //Bootstrap
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-function Cart({cart}) {
+function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) {
     const cartList = [];
 
     console.log(cart);
@@ -19,7 +19,9 @@ function Cart({cart}) {
     } else{
         cart.line_items.map((item) => (
             cartList.push(
-               <CartItem cartItem={item} />
+               <CartItem cartItem={item}
+                         onUpdateCartQty={handleUpdateCartQty}
+                         onRemoveFromCart={handleRemoveFromCart} />
             )
         ))
     }
@@ -37,8 +39,11 @@ function Cart({cart}) {
                             <h2>Total Amount: <b style={{color:'darkGreen'}}>{cart.subtotal.formatted_with_symbol}</b></h2>
                         </div>
                         <div className="cartButtons">
-                            <Button variant="warning">Empty Cart</Button>
-                            <Button variant="success">Checkout</Button>
+                            <Button variant="warning" onClick={handleEmptyCart}>Empty Cart</Button>
+                            <Link to="/checkout">
+                                <Button variant="success">Checkout</Button>
+                            </Link>
+                            
                         </div>
                     </div>
                     

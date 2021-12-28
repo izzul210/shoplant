@@ -3,6 +3,7 @@
     margin: 10px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     .cartLeft{
@@ -38,9 +39,33 @@
     .cartRight{
         margin-top: 20px;
         padding: 10px;
+        display: flex;
+        flex-direction: row;
+        
 
-        button{
+        .qtyButton{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            button{
+                margin: 10px;
+                padding: 5px;
+                border: none;
+                border-radius: 5px;
+                height: 30px;
+                width: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgb(240, 204, 178);
+            }
+        }
+
+        .deleteButton{
             border: none;
+            margin-left: 10px;
+            background: none;
             svg{
                 height: 1.5rem;
                 width: 1.5rem;

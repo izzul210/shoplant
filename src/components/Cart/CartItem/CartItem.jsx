@@ -3,7 +3,9 @@ import './CartItem.scss';
 
 import {RiDeleteBin2Fill} from 'react-icons/ri';
 
-function CartItem({cartItem}) {
+function CartItem({cartItem, onUpdateCartQty, onRemoveFromCart}) {
+    console.log(cartItem);
+    
     return (
         <div className="cartItem">
             <div className="cartLeft">
@@ -17,7 +19,12 @@ function CartItem({cartItem}) {
                 </div>
             </div>
             <div className="cartRight">
-                <button>
+                <div className="qtyButton">
+                    <button onClick={() => onUpdateCartQty(cartItem.id, cartItem.quantity+1)}><h3>+</h3></button>
+                    <h5>{cartItem.quantity}</h5>
+                    <button onClick={() => onUpdateCartQty(cartItem.id, cartItem.quantity-1)}><h3>-</h3></button>
+                </div>
+                <button className="deleteButton" onClick={() => onRemoveFromCart(cartItem.id)}>
                     <RiDeleteBin2Fill />
                 </button>
                 
