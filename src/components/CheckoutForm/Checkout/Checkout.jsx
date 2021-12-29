@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Checkout.scss';
-import { Container } from 'react-bootstrap';
+import { Container, Button, Spinner } from 'react-bootstrap';
 import { Stepper, Step } from 'react-form-stepper';
 import AddressForm from '../AddressForm/AddressForm';
 import PaymentForm from '../PaymentForm/PaymentForm';
 import { commerce } from '../../../lib/commerce';
+import {Link} from 'react-router-dom';
 
 const steps = ['Shipping Address', 'Payment Details'];
 
@@ -12,6 +13,7 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
+    const [isFinished, setIsFinished] = useState(false);
 
     //Generate checkout token as soon as enter Checkout page
     useEffect(() => {
@@ -36,6 +38,13 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
     const next = (data) => {
         setShippingData(data);
         nextStep();
+        console.log('After nextStep');
+    }
+
+    const timeout = () => {
+        setTimeout(() => {
+            setIsFinished(true)
+        }, 5000);
     }
 
     const Form = () => activeStep === 0 
@@ -45,7 +54,44 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
                        checkoutToken={checkoutToken} 
                        nextStep={nextStep}
                        backStep={backStep}
-                       onCaptureCheckout={onCaptureCheckout} />
+                       onCaptureCheckout={onCaptureCheckout}
+                       timeout={timeout} />
+
+
+    let Confirmation = () => order.customer ? (
+        <div>
+            <h3>Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}</h3>
+            <br/>
+            <h5>Order ref: {order.customer_reference} </h5>
+            <Link to="/">
+                <Button>Back to Home</Button>
+            </Link>
+        </div>
+    ) : isFinished ? (
+        <div>
+            <h3>Thank you for your purchase </h3>
+            <br/>
+            <Link to="/">
+                <Button>Back to Home</Button>
+            </Link>
+        </div>
+    ) : (
+        <div>
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>
+    )
+
+    if(error){
+        <>
+         <h5>Error: {error}</h5>
+         <br/>
+         <Link to="/">
+             <Button>Go back Home</Button>
+         </Link>
+        </>
+    }
 
     return (
         <Container>
@@ -55,7 +101,7 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
                         <Step label={step} />
                     ))}
                 </Stepper> 
-                {activeStep === steps.length ? <h1>Confirmation!</h1> : checkoutToken && <Form />}
+                {activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
             </div>
         </Container>
             

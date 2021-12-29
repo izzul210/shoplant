@@ -6,7 +6,7 @@ import {Button} from 'react-bootstrap';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-function PaymentForm({checkoutToken, shippingData, backStep, onCaptureCheckout, nextStep}) {
+function PaymentForm({checkoutToken, shippingData, backStep, onCaptureCheckout, nextStep, timeout}) {
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
 
@@ -50,6 +50,7 @@ function PaymentForm({checkoutToken, shippingData, backStep, onCaptureCheckout, 
             console.log(orderData);
 
             onCaptureCheckout(checkoutToken.id, orderData);
+            timeout();
             nextStep();
         }
     }
