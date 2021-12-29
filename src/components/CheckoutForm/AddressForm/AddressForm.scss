@@ -13,4 +13,11 @@
             width: 500px;
         }
     }
+
+    .checkOutButtons{
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        padding: 10px 20px;
+    }
 }

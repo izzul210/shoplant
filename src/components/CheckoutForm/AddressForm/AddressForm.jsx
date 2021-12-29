@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { FloatingLabel, Form } from 'react-bootstrap';
+import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import './AddressForm.scss';
 import { commerce } from '../../../lib/commerce';
+import { Link } from 'react-router-dom';
 
-function AddressForm({checkoutToken}) {
+function AddressForm({checkoutToken, next}) {
     const { control, handleSubmit } = useForm({
         defaultValues:{
             firstName:'',
@@ -58,7 +59,9 @@ function AddressForm({checkoutToken}) {
     },[shippingSubdivision])
 
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        next({...data, shippingCountry, shippingSubdivision, shippingOption});
+    }
 
     return (
         <div className="addressForm">
@@ -135,7 +138,12 @@ function AddressForm({checkoutToken}) {
                         </Form.Select>
                     </FloatingLabel>
               </div>
-              <input type="submit" />
+              <div className="checkOutButtons">
+                  <Link to="/cart">
+                    <Button variant="outline-dark">Back to Cart </Button>
+                  </Link>
+                  <Button variant="secondary" type="submit">Next</Button>
+              </div>
           </Form>
         </div>
     )
