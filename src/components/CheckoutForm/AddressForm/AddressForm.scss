@@ -1,0 +1,16 @@
+.addressForm{
+    margin-top: 50px;
+
+    .formCard{  
+        padding: 20px 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+
+        .form-floating{
+            width: 500px;
+        }
+    }
+}
