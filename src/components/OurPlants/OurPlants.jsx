@@ -32,7 +32,7 @@ function OurPlants({products, handleAddToCart}) {
     }
 
     return (
-        <div className="homepage">
+        <div className="homepage" id="ourProducts" >
             <Container>
                 <h2>Our Plants</h2>
                 <div className="allProducts">

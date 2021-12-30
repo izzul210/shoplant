@@ -1,24 +1,27 @@
 import React from 'react';
-import './TopPage.scss';
 
-//Components
-import TopBar from './TopBar';
+import { Container } from 'react-bootstrap';
+import './TopPage.scss';
 
 
 function TopPage() {
     return (
         <div className="topPage">
-            <div className="top">
-                <div className="left">
-                    <h1>Wherever life Plants you,
-                        bloom with grace
-                    </h1>
-                    <p>Shop your plant with ShoPlant</p>
+            <Container>
+                <div className="top">
+                    <div className="title">
+                        <h1>Wherever life <b style={{color: 'green'}}>Plants</b> you, </h1>
+                          <h1>bloom with grace</h1>  
+                        
+                        <p>Shop your Plants with <b>ShoPlant</b></p>
+                    </div>
+                    <div className="button">
+                        <a href="#ourProducts">
+                            <button>View Our Products</button>
+                        </a>
+                    </div>
                 </div>
-                <div className="right">
-
-                </div>
-            </div>
+            </Container>
         </div>
     )
 }

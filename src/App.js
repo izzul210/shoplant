@@ -87,7 +87,7 @@ function App() {
           <Route exact path="/" element={
             <React.Fragment>
               <TopPage />
-              <OurPlants products={products} handleAddToCart={handleAddToCart} />
+              <OurPlants products={products} handleAddToCart={handleAddToCart} id="ourProducts" />
             </React.Fragment>
           } />
           <Route exact path="/cart" element={<Cart cart={cart} 
