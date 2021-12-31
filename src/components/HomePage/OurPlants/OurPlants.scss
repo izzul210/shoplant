@@ -1,0 +1,48 @@
+.homepage{
+    padding: 60px 10px;
+    font-family: 'Poppins', sans-serif;
+
+    .tag{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        button{
+            border: none;
+            padding: 5px 20px;
+            color: black;
+            transition:all 0.1s ease-in-out;
+
+            &:hover{
+                background-color: #32ca9a;
+                color: white;
+            }
+
+            &:active{
+                background: rgb(158, 158, 158);
+                transition:all 0.1s ease-in-out;
+
+            }
+        }
+
+        .active{
+            background-color: #32ca9a;
+            color: white;
+        }
+
+
+    }
+
+    .allProducts{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        min-height: 40rem;
+        margin: 20px 0px;
+    }
+}

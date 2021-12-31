@@ -3,15 +3,19 @@ import './ProductCard.scss';
 
 //Bootstrap
 import {Modal, CloseButton} from 'react-bootstrap';
+import { RiContactsBookLine } from 'react-icons/ri';
 
 function MyVerticallyCenteredModal(props) {
     const {productId,
         productName,
         productImage,
         productPrice,
+        productDescription,
         onAddToCart} = props;
 
     const [quantity, setQuantity] = useState(1);
+
+
 
     const addToCart = () => {
         onAddToCart(productId, quantity);
@@ -33,21 +37,22 @@ function MyVerticallyCenteredModal(props) {
               <img src={productImage} alt=""></img>
             </div>
             <div className="description">
-                <h3>{productName}</h3>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                <h1>{productName}</h1>
+                <div dangerouslySetInnerHTML={{__html: productDescription}} />
             </div>
         </Modal.Body>
         <Modal.Footer>
-            <div className="qtyButton">    
-                <button onClick={() => setQuantity((prevQuantity) => prevQuantity > 1 ? prevQuantity-1 : prevQuantity)}><h3>-</h3></button>
-                <h5>{quantity}</h5>
-                <button onClick={() => setQuantity((prevQuantity) => prevQuantity+1)}><h3>+</h3></button>
-           </div>
-          <button className="addCart" onClick={addToCart}>Add To Cart</button>
+            <div className="price">
+                <h1>{productPrice}</h1>
+            </div>
+            <div className="buttons">
+                <div className="qtyButton">    
+                    <button onClick={() => setQuantity((prevQuantity) => prevQuantity > 1 ? prevQuantity-1 : prevQuantity)}><h3>-</h3></button>
+                    <h5>{quantity}</h5>
+                    <button onClick={() => setQuantity((prevQuantity) => prevQuantity+1)}><h3>+</h3></button>
+            </div>
+            <button className="addCart" onClick={addToCart}>Add To Cart</button>
+            </div>
         </Modal.Footer>
       </Modal>
     );
@@ -59,6 +64,7 @@ function ProductCard(props) {
            productName,
            productImage,
            productPrice,
+           productDescription,
            onAddToCart} = props;
 
     const [modalShow, setModalShow] = useState(false);
@@ -84,6 +90,7 @@ function ProductCard(props) {
                 productName={productName}
                 productImage={productImage}
                 productPrice={productPrice}
+                productDescription={productDescription}
                 onAddToCart={onAddToCart}
                 />
         </div>

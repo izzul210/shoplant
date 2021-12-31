@@ -1,6 +1,7 @@
 .productCard{
     margin: 20px;
     font-family: 'Poppins', sans-serif;
+    transition:all 0.2s ease-in-out;
 
     .image{
         img{
@@ -20,6 +21,7 @@
     .context{
         // display: flex;
         // justify-content: space-between;
+        transition:all 0.2s ease-in-out;
 
         .description{
             margin: 10px 0px 5px 5px;
@@ -89,6 +91,12 @@
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.131);
     font-family: 'Poppins', sans-serif;
 
+    .closeButton{
+        display: flex;
+        justify-content: flex-end;
+        
+    }
+
     .image{
         display: flex;
         flex-direction: row;
@@ -104,64 +112,82 @@
 
     .description{
         margin-top: 20px;
+
+        h1{
+            margin-bottom: 20px;
+        }
         p{
             color:rgb(75, 75, 75);
-        }
-    }
-    .addCart{
-        padding: 10px 20px;
-        border: none;
-        border-bottom-right-radius: 30px;
-        border-top-left-radius: 30px;
-        background-color: #3bb78f;
-        background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
-        color: white;
-        font-size: 1rem;
-        font-weight: 400;
-        box-shadow: 0 15px 20px rgba(41, 41, 41, 0);
-        transition:all 0.2s ease-in-out;
-
-        &:hover{
-            box-shadow: 0 10px 20px rgba(29, 29, 29, 0.207);
-        }
-
-        &:active{
-            transition:all 0.2s ease-in-out;
-            box-shadow: inset -2px -2px 3px #f8f7f7, inset 2px 2px 7px rgb(0 0 0 / 23%);
+            margin: 10px 0px;
         }
     }
 
-    .closeButton{
-        display: flex;
-        justify-content: end;
-        
-    }
+    .modal-footer{
+        justify-content: space-between;
+        flex-wrap: wrap;
 
-    .qtyButton{
-        margin: 0px 20px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-
-        button{
-            border: none;
-            height: 40px;
-            width: 40px;
-            border-radius: 2px;
-            text-align: center;
-            transition:all 0.2s ease-in-out;
-            &:active{
-                background: rgb(158, 158, 158);
-                transition:all 0.2s ease-in-out;
-
+        .price{
+            h1{
+                color: rgb(8, 85, 8);
             }
         }
 
-        h5{
-            width: 30px;
-            text-align: center;
+        .buttons{
+            display: flex;
+            .addCart{
+                padding: 10px 20px;
+                border: none;
+                border-bottom-right-radius: 30px;
+                border-top-left-radius: 30px;
+                background-color: #3bb78f;
+                background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+                color: white;
+                font-size: 1rem;
+                font-weight: 400;
+                box-shadow: 0 15px 20px rgba(41, 41, 41, 0);
+                transition:all 0.2s ease-in-out;
+        
+                &:hover{
+                    box-shadow: 0 10px 20px rgba(29, 29, 29, 0.207);
+                }
+        
+                &:active{
+                    transition:all 0.2s ease-in-out;
+                    box-shadow: inset -2px -2px 3px #f8f7f7, inset 2px 2px 7px rgb(0 0 0 / 23%);
+                }
+            }
+    
+            .qtyButton{
+                margin: 0px 20px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+        
+                button{
+                    border: none;
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 2px;
+                    text-align: center;
+                    transition:all 0.2s ease-in-out;
+                    &:active{
+                        background: rgb(158, 158, 158);
+                        transition:all 0.2s ease-in-out;
+        
+                    }
+                }
+        
+                h5{
+                    width: 30px;
+                    text-align: center;
+                }
+            }
         }
+
     }
+    
+
+    
 
     
 }

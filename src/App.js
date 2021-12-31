@@ -2,8 +2,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 //Components
 import TopPage from './components/TopPage/TopPage';
-import OurPlants from './components/OurPlants/OurPlants';
-import FeaturedPlants from './components/OurPlants/FeaturedPlants/FeaturedPlants';
+import OurPlants from './components/HomePage/OurPlants/OurPlants';
+import FeaturedPlants from './components/HomePage/FeaturedPlants/FeaturedPlants';
 import Cart from './components/Cart/Cart';
 import TopBar from './components/TopPage/TopBar';
 import Checkout from './components/CheckoutForm/Checkout/Checkout';
@@ -20,9 +20,19 @@ function App() {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
   
-  //Fetch list of products sell
+  //Fetch all list of products sell
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
+
+    console.log('data:');
+    console.log(data);
+    setProducts(data);
+  }
+
+  //Fetch products based on categories
+  const fetchProductCategory = async (category) => {
+    const {data} = await commerce.products.list({
+      category_slug: [category]});
     setProducts(data);
   }
 
@@ -89,7 +99,10 @@ function App() {
             <React.Fragment>
               <TopPage />
               <FeaturedPlants />
-              <OurPlants products={products} handleAddToCart={handleAddToCart}/>
+              <OurPlants products={products} 
+                         handleAddToCart={handleAddToCart}
+                         fetchProducts={fetchProducts}
+                         fetchProductCategory={fetchProductCategory}/>
             </React.Fragment>
           } />
           <Route exact path="/cart" element={<Cart cart={cart} 
