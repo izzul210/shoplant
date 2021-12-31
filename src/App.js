@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 //Components
 import TopPage from './components/TopPage/TopPage';
 import OurPlants from './components/OurPlants/OurPlants';
+import FeaturedPlants from './components/OurPlants/FeaturedPlants/FeaturedPlants';
 import Cart from './components/Cart/Cart';
 import TopBar from './components/TopPage/TopBar';
 import Checkout from './components/CheckoutForm/Checkout/Checkout';
@@ -87,7 +88,8 @@ function App() {
           <Route exact path="/" element={
             <React.Fragment>
               <TopPage />
-              <OurPlants products={products} handleAddToCart={handleAddToCart} id="ourProducts" />
+              <FeaturedPlants />
+              <OurPlants products={products} handleAddToCart={handleAddToCart}/>
             </React.Fragment>
           } />
           <Route exact path="/cart" element={<Cart cart={cart} 

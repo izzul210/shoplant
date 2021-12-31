@@ -1,0 +1,64 @@
+.featuredPlants{
+    padding: 4rem 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    font-family: 'Poppins', sans-serif;
+
+    .rarePlant,
+    .indoorPlant,
+    .pokemonPlant{
+        height: 15rem;
+        width: 25rem;
+        display: flex;
+        flex-direction: row;
+
+        .context{
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+
+            p{
+                color: grey;
+            }
+
+            h3{
+                font-weight: 600;
+                color: rgb(17, 95, 17);
+            }
+        }
+    }
+
+    .rarePlant{
+        background-color: #c3ffe7;
+        background-image: linear-gradient(315deg, #b1f5db 0%, #d8faf1 74%);
+
+        img{
+            width: 11rem;
+        }
+    }
+
+    .indoorPlant{
+        background-color: #89d8d3;
+        background-image: linear-gradient(315deg, #daebea 0%, #c7f3ec 74%);
+
+        img{
+            width: 13rem;
+            transform: translate(5%, 10%);
+        }
+    }
+
+    .pokemonPlant{
+        background-color: #deebdd;
+        background-image: linear-gradient(315deg, #e8f2e7 0%, #def0e0 74%);
+
+        img{
+            width: 10rem;
+            transform: translate(-5%, 5%);
+        }
+    }
+}
