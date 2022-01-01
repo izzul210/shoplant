@@ -50,6 +50,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+
             
             button{
                 padding: 10px 20px;
@@ -134,6 +135,13 @@
 
         .buttons{
             display: flex;
+            gap: 20px;
+
+            @media screen and (max-width: 640px){
+                justify-content: space-between;
+                width: 100%;
+            }
+
             .addCart{
                 padding: 10px 20px;
                 border: none;
@@ -158,7 +166,7 @@
             }
     
             .qtyButton{
-                margin: 0px 20px;
+                margin: 0px;
                 display: flex;
                 gap: 10px;
                 align-items: center;

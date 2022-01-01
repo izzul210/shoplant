@@ -2,10 +2,11 @@ import React from 'react';
 import './Cart.scss';
 import {Link} from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
+import {CgTrashEmpty} from 'react-icons/cg';
+import {MdOutlineAddShoppingCart} from 'react-icons/md';
 
 //Bootstrap
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 
 function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) {
     const cartList = [];
@@ -29,21 +30,28 @@ function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
     return (
         <div className="cart">
             <Container>
-                <h1>Order Summary</h1>
+                <h1>Shopping Cart</h1>
                 <div className="cartContainer">
                     <div className="cartItems">
                         {cartList}
                     </div>
+                    <hr/>
                     <div className="cartBelow">
                         <div className="cartTotal">
-                            <h2>Total Amount: <b style={{color:'darkGreen'}}>{cart.subtotal.formatted_with_symbol}</b></h2>
+                            <h2>Total </h2><h2><b style={{color:'darkGreen'}}>{cart.subtotal.formatted_with_symbol}</b></h2> 
                         </div>
                         <div className="cartButtons">
-                            <Button variant="warning" onClick={handleEmptyCart}>Empty Cart</Button>
+                            <div className="back">
+                                <Link to="/">
+                                    <button><MdOutlineAddShoppingCart/></button>
+                                </Link>
+                            </div>
+                            <div className="shopButton">
+                            <button className="empty" onClick={handleEmptyCart}><CgTrashEmpty/>Empty Cart</button>
                             <Link to="/checkout">
-                                <Button variant="success">Checkout</Button>
+                                <button className="checkout" >Checkout</button>
                             </Link>
-                            
+                            </div>
                         </div>
                     </div>
                     
