@@ -6,6 +6,7 @@ import AddressForm from '../AddressForm/AddressForm';
 import PaymentForm from '../PaymentForm/PaymentForm';
 import { commerce } from '../../../lib/commerce';
 import {Link} from 'react-router-dom';
+import cutePlant from '../../../asset/images/cute_plant.png';
 
 const steps = ['Shipping Address', 'Payment Details'];
 
@@ -59,20 +60,22 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
 
 
     let Confirmation = () => order.customer ? (
-        <div>
+        <div className="confirmationPage">
             <h3>Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}</h3>
             <br/>
             <h5>Order ref: {order.customer_reference} </h5>
+            <br /> 
+            <img src={cutePlant} alt=""></img>
             <Link to="/">
-                <Button>Back to Home</Button>
+                <button className="backToCart">Back to Home</button>
             </Link>
         </div>
     ) : isFinished ? (
-        <div>
+        <div className="confirmationPage">
             <h3>Thank you for your purchase </h3>
             <br/>
             <Link to="/">
-                <Button>Back to Home</Button>
+                <button className="backToCart">Back to Home</button>
             </Link>
         </div>
     ) : (

@@ -7,6 +7,7 @@ import {MdOutlineAddShoppingCart} from 'react-icons/md';
 
 //Bootstrap
 import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
 
 function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) {
     const cartList = [];
@@ -14,7 +15,14 @@ function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
     console.log(cart);
 
     if(!cart.line_items){
-        return 'Loading...'
+        return <div className="cart">
+                    <Container>
+                        <h1>Shopping Cart</h1>
+                        <Spinner animation="border" role="status" >
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>  
+                    </Container>
+                </div>
     } else if(cart.line_items === 0){
         return <h1>You have no items in your shopping cart. Go and add some buddy!</h1>
     } else{
@@ -43,7 +51,7 @@ function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}
                         <div className="cartButtons">
                             <div className="back">
                                 <Link to="/">
-                                    <button><MdOutlineAddShoppingCart/></button>
+                                   <button><MdOutlineAddShoppingCart/>Back to Shopping</button>
                                 </Link>
                             </div>
                             <div className="shopButton">

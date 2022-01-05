@@ -2,7 +2,6 @@ import React from 'react';
 import Review from './Review';
 import { Elements, CardElement, ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import {Button} from 'react-bootstrap';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -46,9 +45,6 @@ function PaymentForm({checkoutToken, shippingData, backStep, onCaptureCheckout, 
                 }
             }
 
-            console.log('orderData');
-            console.log(orderData);
-
             onCaptureCheckout(checkoutToken.id, orderData);
             timeout();
             nextStep();
@@ -56,26 +52,28 @@ function PaymentForm({checkoutToken, shippingData, backStep, onCaptureCheckout, 
     }
 
     return (
-        <div>
+        <div className="paymentPage">
             <Review checkoutToken={checkoutToken}/>
-             <br />
-             <h4>Payment Method</h4>
-             <Elements stripe={stripePromise}>
-                 <ElementsConsumer>
-                     {({ elements, stripe }) => (
-                         <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
-                             <CardElement />
-                             <br/><br/>
-                             <div>
-                                 <Button onClick={backStep}>Back</Button>
-                                 <Button type="submit" disabled={!stripe} >
-                                     Pay { checkoutToken.live.subtotal.formatted_with_symbol }
-                                 </Button>
-                             </div>
-                         </form>
-                     )}
-                 </ElementsConsumer>
-             </Elements>
+            <div className="paymentMethod">
+                <h4>Payment Method</h4>
+                <Elements stripe={stripePromise}>
+                    <ElementsConsumer>
+                        {({ elements, stripe }) => (
+                            <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
+                                <CardElement />
+                                <br/><br/>
+                                <div className="paymentButtons">
+                                    <button className="backToCart" onClick={backStep}>Back</button>
+                                    <button className="pay" type="submit" disabled={!stripe} >
+                                        Pay <h5>{ checkoutToken.live.subtotal.formatted_with_symbol }</h5>
+                                    </button>
+                                </div>
+                            </form>
+                        )}
+                    </ElementsConsumer>
+                </Elements>
+             </div>
+             
         </div>
     )
 }

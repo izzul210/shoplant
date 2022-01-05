@@ -65,7 +65,6 @@ function OurPlants({products, handleAddToCart, fetchProducts, fetchProductCatego
                     {productList}
                 </div>
             </Container>
-            <hr />
         </div>
     )
 }

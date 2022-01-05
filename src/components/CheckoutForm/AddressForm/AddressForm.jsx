@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { FloatingLabel, Form, Button } from 'react-bootstrap';
+import { FloatingLabel, Form } from 'react-bootstrap';
 import './AddressForm.scss';
 import { commerce } from '../../../lib/commerce';
 import { Link } from 'react-router-dom';
@@ -65,7 +65,7 @@ function AddressForm({checkoutToken, next}) {
 
     return (
         <div className="addressForm">
-          <h4>Shipping Address</h4>
+          <h2>Shipping Address</h2>
           <Form onSubmit={handleSubmit(onSubmit)}>
               <div className="formCard">
                 <Controller  
@@ -140,9 +140,9 @@ function AddressForm({checkoutToken, next}) {
               </div>
               <div className="checkOutButtons">
                   <Link to="/cart">
-                    <Button variant="outline-dark">Back to Cart </Button>
+                    <button className="backToCart">Back to Cart </button>
                   </Link>
-                  <Button variant="secondary" type="submit">Next</Button>
+                  <button className="next" type="submit">Next</button>
               </div>
           </Form>
         </div>

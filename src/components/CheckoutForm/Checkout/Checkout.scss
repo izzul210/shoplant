@@ -1,8 +1,51 @@
 .checkout{
-    padding: 20px 5px;    
-    background-color: #d9e4f5;
-    background-image: linear-gradient(315deg, #e9eff8 0%, #f8f0f2 50%); 
-    margin: 50px 10px;
-    border-radius: 20px;
+    padding: 20px 10px;    
+    border: 1px solid rgba(89, 89, 89, 0.487);
+    margin: 25px 2px;
+    font-family: 'Poppins', sans-serif;
+    
+    .RFS-StepperContainer{
+        font-family: 'Poppins', sans-serif;
+        padding: 20px 0px;
+    }
 
+    .confirmationPage{
+        padding: 1rem 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        a{
+            text-decoration: none;
+        }
+
+        .backToCart{
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 400;
+            box-shadow: 0 20px 20px rgba(70, 70, 70, 0);
+            transition:all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            &:hover{
+                box-shadow: 0 10px 20px rgba(29, 29, 29, 0.152);
+            }
+    
+            &:active{
+                transition:all 0.2s ease-in-out;
+                box-shadow: inset -2px -2px 3px #f8f7f7, inset 2px 2px 7px rgb(0 0 0 / 23%);
+            }
+        }
+
+        img{
+            width: 10rem;
+            height: 13rem;
+            margin: 20px;
+        }
+    }
 }

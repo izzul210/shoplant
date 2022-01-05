@@ -1,5 +1,5 @@
 .cart{
-    padding: 5rem 10px;
+    padding: 3rem 10px;
     font-family: 'Poppins', sans-serif;
 
     h1{
@@ -7,8 +7,6 @@
     }
 
     .cartContainer{
-        // background-color: #fee2f8;
-        // background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
         margin: 20px 0px;
         border-radius: 20px;
 
@@ -43,6 +41,16 @@
                 }
 
                 .back{
+                    a{
+                        text-decoration: none;
+                    }
+                    @media screen and (max-width: 640px){
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 10px;
+        
+                    }
                     button{
                         padding: 10px 20px;
                         border-radius: 0px;
@@ -76,6 +84,11 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-end;
+                    @media screen and (max-width: 640px){
+                        width: 100%;
+                        justify-content: space-between;
+        
+                    }
         
                     button{
                         margin: 10px;

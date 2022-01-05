@@ -1,0 +1,20 @@
+.footNote{
+    font-family: 'Poppins', sans-serif;
+    height: 7rem;
+    background-color: #3c3c3c;
+    background-image: linear-gradient(315deg, #2e2e2e 0%, #272727 74%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+
+    p{
+        color: white;
+        font-weight: 200;
+        a{
+            font-weight: 600;
+            text-decoration: none;
+            color: rgb(217, 225, 217);
+        }
+    }
+}

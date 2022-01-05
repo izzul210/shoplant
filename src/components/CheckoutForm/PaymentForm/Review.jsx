@@ -2,20 +2,29 @@ import React from 'react';
 import './PaymentForm.scss';
 
 function Review({checkoutToken}) {
+    console.log('In Review Page: checkoutToken');
+    console.log(checkoutToken);
+
     return (
         <div className="checkoutReview">
-            <h2>Order Summary</h2>
+            <h4>Order Summary</h4>
             {checkoutToken.live.line_items.map((product) => (
                 <div key={product.name} className="productDesc">
-                    <div>
-                        <h4>{product.name}</h4>
-                        <p>Quantity: {product.quantity}</p>
+                    <div className="productImage">
+                        <img src={product.image.url} alt=""></img>
                     </div>
-                    <h5>{product.line_total.formatted_with_symbol}</h5>     
+                    <div className="productDetail">
+                        <h4>{product.name}</h4>
+                        <div style={{display: 'flex', gap: '10px'}}><h5>{product.line_total.formatted_with_symbol}</h5> <p style={{color: 'green'}}>x {product.quantity}</p></div>  
+                    </div>
+                       
                 </div>
             ))}
-            <h3>Total</h3>
-            <h6>{checkoutToken.live.subtotal.formatted_with_symbol}</h6>
+            <hr />
+            <div className="productTotal">
+                <h4>Total</h4>
+                <h2 style={{color: 'green'}}>{checkoutToken.live.subtotal.formatted_with_symbol}</h2>
+            </div>
         </div>
     )
 }

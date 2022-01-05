@@ -7,6 +7,7 @@ import FeaturedPlants from './components/HomePage/FeaturedPlants/FeaturedPlants'
 import Cart from './components/Cart/Cart';
 import TopBar from './components/TopPage/TopBar';
 import Checkout from './components/CheckoutForm/Checkout/Checkout';
+import FootNote from './components/FootNote/FootNote';
 
 //Commerce.js
 import { commerce } from './lib/commerce';
@@ -23,9 +24,6 @@ function App() {
   //Fetch all list of products sell
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
-
-    console.log('data:');
-    console.log(data);
     setProducts(data);
   }
 
@@ -114,6 +112,7 @@ function App() {
                                                            onCaptureCheckout={handleCaptureCheckout} 
                                                            error={errorMessage} />} />
         </Routes>
+        <FootNote />
       </div>
     </Router>
     

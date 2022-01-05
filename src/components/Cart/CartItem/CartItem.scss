@@ -71,14 +71,20 @@
                 padding: 5px;
                 border: none;
                 border-radius: 5px;
-                height: 30px;
-                width: 30px;
+                height: 32px;
+                width: 32px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 background: rgb(240, 204, 178);
                 font-size: 1.5rem;
                 font-weight: 500;
+
+                &:active{
+                    background: rgb(146, 146, 146);
+                    transition:all 0.2s ease-in-out;
+    
+                }
 
             }
         }
