@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import DataContext from '../../../context/DataContext';
 import './Checkout.scss';
 import { Container, Button, Spinner } from 'react-bootstrap';
 import { Stepper, Step } from 'react-form-stepper';
@@ -10,7 +11,9 @@ import cutePlant from '../../../asset/images/cute_plant.png';
 
 const steps = ['Shipping Address', 'Payment Details'];
 
-function Checkout({cart, order, onCaptureCheckout, error}) {
+function Checkout() {
+    const {cart, order, handleCaptureCheckout, error} = useContext(DataContext);
+    const  onCaptureCheckout = handleCaptureCheckout;
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
@@ -25,10 +28,8 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
                 console.log(token);
                 setCheckoutToken(token);
             } catch (error) {
-
             }
         }
-
         generateToken()
     }, [cart]);
 
@@ -39,7 +40,6 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
     const next = (data) => {
         setShippingData(data);
         nextStep();
-        console.log('After nextStep');
     }
 
     const timeout = () => {

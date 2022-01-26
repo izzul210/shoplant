@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import DataContext from '../../context/DataContext';
 import './TopPage.scss';
 
 //Bootstrap stuff
@@ -10,7 +11,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //React Icons
 import {BsFillCartCheckFill} from 'react-icons/bs';
 
-function TopBar({cartItem}) {
+function TopBar() {
+    const { cart } = useContext(DataContext);
+    const cartItem = cart.total_items;
+
     return (
         <div className="topBar" >
             <Navbar expand="lg" sticky="top">
@@ -19,7 +23,7 @@ function TopBar({cartItem}) {
                     <Nav className="me-auto">
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/cart" className="cart"><BsFillCartCheckFill /> <b>{cartItem}</b></Nav.Link>
+                        <Nav.Link href="/cart" className="cartBar"><BsFillCartCheckFill /> <b>{cartItem}</b></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

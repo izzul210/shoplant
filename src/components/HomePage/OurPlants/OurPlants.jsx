@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import DataContext from '../../../context/DataContext';
 import './OurPlants.scss';
 import ProductCard from '../ProductCard/ProductCard';
 
@@ -6,7 +7,8 @@ import ProductCard from '../ProductCard/ProductCard';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 
-function OurPlants({products, handleAddToCart, fetchProducts, fetchProductCategory}) {
+function OurPlants() {
+    const {products, handleAddToCart, fetchProducts, fetchProductCategory} = useContext(DataContext);
     const productList = [];
     const [productCategory, setProductCategory ] = useState('all');
 

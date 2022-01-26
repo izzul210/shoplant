@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import DataContext from '../../context/DataContext';
 import './Cart.scss';
 import {Link} from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
@@ -9,10 +10,9 @@ import {MdOutlineAddShoppingCart} from 'react-icons/md';
 import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 
-function Cart({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart}) {
+function Cart() {
+    const {cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart} = useContext(DataContext);
     const cartList = [];
-
-    console.log(cart);
 
     if(!cart.line_items){
         return <div className="cart">
